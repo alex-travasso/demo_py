@@ -27,16 +27,22 @@ def index():
 
 
 
+# http://34.199.8.76:5000/
+@app.route('/select')
+def select():
+    return render_template('select.html')
+
+
 
 
 # http://34.199.8.76:5000/demo/home/
-@app.route('/pythonlogin/home')
+@app.route('/home')
 def home():
     return render_template('home.html')
 
 
 # http://localhost:5000/python/logout - this will be the logout page
-@app.route('/demo/logout')
+@app.route('/logout')
 def logout():
     # Remove session data, this will log the user out
    session.pop('loggedin', None)
@@ -48,7 +54,7 @@ def logout():
 
 
 
-@app.route('/demo/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     # Check if user is loggedin
     if 'loggedin' in session:
@@ -86,7 +92,7 @@ def login():
 
 
 # http://localhost:5000/pythinlogin/profile - this will be the profile page, only accessible for loggedin users
-@app.route('/demo/profile')
+@app.route('/profile')
 def profile():
     # Check if user is loggedin
     if 'loggedin' in session:
