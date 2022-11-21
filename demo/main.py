@@ -30,7 +30,11 @@ def index():
 # http://34.199.8.76:5000/
 @app.route('/select')
 def select():
-    return render_template('select.html')
+    if 'loggedin' in session:
+        # User is loggedin show them the home page
+        return redirect(url_for('profile'))
+    else:
+    	return render_template('select.html')
 
 
 
@@ -49,7 +53,7 @@ def logout():
    session.pop('id', None)
    session.pop('username', None)
    # Redirect to login page
-   return redirect(url_for('login'))
+   return redirect(url_for('select'))
 
 
 
@@ -59,7 +63,8 @@ def login():
     # Check if user is loggedin
     if 'loggedin' in session:
         # User is loggedin show them the home page
-        return render_template('home.html', username=session['username'])
+        return redirect(url_for('profile'))
+
     # Output message if something goes wrong...
     msg = ''
     # Check if "username" and "password" POST requests exist (user submitted form)
@@ -78,8 +83,10 @@ def login():
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
+            session['login_method'] = "basic"
+
             # Redirect to home page
-            return redirect(url_for('home'))
+            return redirect(url_for('profile'))
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
@@ -89,18 +96,17 @@ def login():
 
 
 
-
-
 # http://localhost:5000/pythinlogin/profile - this will be the profile page, only accessible for loggedin users
 @app.route('/profile')
 def profile():
-    # Check if user is loggedin
-    if 'loggedin' in session:
-        # We need all the account info for the user so we can display it on the profile page
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
-        account = cursor.fetchone()
-        # Show the profile page with account info
-        return render_template('profile.html', account=account)
-    # User is not loggedin redirect to login page
-    return redirect(url_for('login'))
+#Check if user is loggedin
+	if 'loggedin' in session:
+# We need all the account info for the user so we can display it on the profile page
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
+		account = cursor.fetchone()
+# Show the profile page with account info
+		return render_template('profile.html', account=account)
+# User is not loggedin redirect to login page
+	else:
+		return render_template('select.html')

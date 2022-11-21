@@ -7,23 +7,15 @@
 <div>
     <p>Your account details are below:</p>
     <table>
-
-        <tr>
-            <td>Connection method:</td>
-            <td>{{ session['login_method']  }}</td>
-        </tr>
-
         <tr>
             <td>Username:</td>
-            <td>{{ account['username'] }}</td>
+	    <td>{{ printf("hello") }</td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td>{{ account['password'] }}</td>
         </tr>
         <tr>
             <td>Email:</td>
-            <td>{{ account['email'] }}</td>
         </tr>
     </table>
 </div>
