@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Login selection</h2>
+<p>Please choose your login method:</p>
+
+
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Basic</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Simple Python login</li>
+              <li>MYSQL database on Azure</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary" onclick="location.href='./login';" value="Go to Google">Sign in</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">OIDC</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Open ID Connect Integration</li>
+              <li>xxxxxx</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Sign in</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">API</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Mobile ID API</li>
+              <li>Full integration</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Sign in</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
