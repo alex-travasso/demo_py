@@ -16,7 +16,8 @@ app.config.update({
     'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post',
     'OIDC_ID_TOKEN_COOKIE_SECURE': False,
     'OIDC_REQUIRE_VERIFIED_EMAIL': False,
-    'OIDC_OPENID_REALM': 'https://mid-dev.com/oidc_callback'
+    'OIDC_OPENID_REALM': 'https://mid-dev.com/oidc_callback',
+    'OIDC_VALID_ISSUERS':'https://openid.mobileid.ch'
 })
 oidc = OpenIDConnect(app)
 
